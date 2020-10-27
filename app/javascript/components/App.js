@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-import mockApartments from './mockApartments.js'
+import mockApartments from './mockApartments'
 
 import PropTypes from "prop-types"
 
