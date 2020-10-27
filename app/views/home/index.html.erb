@@ -1,24 +1,7 @@
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Best Places to Stay in Heonn</title>
-        <%# <%= stylesheet_link_tag 'application' %>
-        </head>
-        <body>
-        <%= react_component("App", {
+<%= react_component("App", {
     logged_in: user_signed_in?,
     sign_in_route: new_user_session_path,
-    sign_out_route: destroy_user_session_path
-    }) %> 
-        <%= yield %>
-    </body>
-</html>
-
-
-
-
-
-
-
-
+    sign_up_route: new_user_registration_path,
+    sign_out_route: destroy_user_session_path,
+    current_user: current_user
+}) %>

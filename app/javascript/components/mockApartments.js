@@ -33,3 +33,5 @@ let mockApts = [
     pets: "no"
   }
 ]
+
+export default mockApts

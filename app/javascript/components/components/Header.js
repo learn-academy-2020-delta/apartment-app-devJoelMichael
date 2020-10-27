@@ -4,7 +4,9 @@ class Header extends Component {
   render() {
     return(
       <>
-      <h5> Apartment Index </h5>
+      <div>
+        <h5> Header </h5>
+      </div>
       </>
     )
   }
