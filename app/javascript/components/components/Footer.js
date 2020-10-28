@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Nav, NavItem } from 'reactstrap'
-
+import waterGun from '../assets/waterGun.png'
 class Footer extends Component{
   render(){
     const {
@@ -11,7 +11,15 @@ class Footer extends Component{
     } = this.props
     return(
       <React.Fragment>
-        <div id="footer">
+        <div
+        id="footer"
+        style={{
+          backgroundImage: `url(${waterGun})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'  
+        }}
+        >
           <Nav>
             <NavItem>
               <a href="/">Home</a>
@@ -20,14 +28,17 @@ class Footer extends Component{
               <a href="/apartmentindex">All the Apartments</a>
             </NavItem>
             { logged_in &&
-              <>
+              <div>
                 <NavItem>
                   <a href={ sign_out_route }>Sign Out</a>
                 </NavItem>
                 <NavItem>
                   <a href="/apartmentnew">Create a New Apartment</a>
                 </NavItem>
-              </>
+                <NavItem>
+                  <a href="/myapartmentindex">See My Apartments</a>
+                </NavItem>
+              </div>
             }
             { !logged_in &&
               <>

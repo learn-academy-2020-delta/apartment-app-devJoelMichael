@@ -6,7 +6,19 @@ class NotFound extends Component {
     return(
       <>
       <div id="nf-title">
-        <h1> 404 </h1>
+        <h1 style={{
+          paddingTop: '25vh',
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center',
+          fontSize: '100px',
+          color: 'white',
+          textShadow: '2px 2px 1.5px lightgrey',
+          backgroundColor: 'black',
+          margin: '0px'
+        }}>
+         404 <br/> Get out of here! <br/> Will attack if awoken.
+        </h1>
       </div>
         <div
         id="nf-body"

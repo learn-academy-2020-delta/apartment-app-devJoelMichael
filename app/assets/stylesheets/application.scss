@@ -173,7 +173,7 @@ div#body-container {
 }
 // ########### A P R T - E D I T ########### //
 
-#edit-body {
+div.index-card {
   height: 100vh;
   text-align: center;
   padding-top: 50px;
@@ -183,9 +183,12 @@ div#body-container {
 }
 // ########### N O T - F O U N D ########### //
 
-#nf-title {}
+#nf-title {
+  font-family: 'Press Start 2P', cursive;
+}
 
 #nf-body {
+  background-color: black;
   height: 100vh;
   text-align: center;
   padding-top: 50px;
@@ -201,26 +204,26 @@ div#footer {
   text-align: center;
   // position: absolute;
   bottom: 0;
-  height: 30% !important;
+  height: 20% !important;
   width: 100%;
   background-color: #598392;
   padding: 15px;
-  font-size: 22.5px;
+  font-size: 15px;
   font-family: 'Press Start 2P', cursive;
 }
 
 li.nav-item {
-  text-align: center;
   display: flex !important;
   justify-content: space-between !important;
+  text-align: center !important;
   font-family: 'Press Start 2P', cursive;
 }
 
 a {
   padding: 10px;
-  text-align: center;
   display: flex !important;
-  justify-content: space-between !important;
+  // justify-content: space-between !important;
+  text-align: center !important;
   color: #01161E;
   font-family: 'Press Start 2P', cursive;
 }
