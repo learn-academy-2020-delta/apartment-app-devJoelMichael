@@ -4,7 +4,12 @@ class ApartmentEdit extends Component {
   render() {
     return(
       <>
-      <h1> Apartment Edit </h1>
+        <div id="edit-title">
+          <h1> Apartment Edit </h1>
+        </div>
+        <div id="edit-body">
+          <h5> Edit Apartment </h5>
+        </div>
       </>
     )
   }

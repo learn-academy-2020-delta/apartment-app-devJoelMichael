@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
+import map from '../assets/heonnMap.jpg'
 
 class Home extends Component {
   render() {
     return(
       <>
-      <h1> Home </h1>
+        <div
+        id="home-body"
+        style={{
+          backgroundImage: `url(${map})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'
+        }}
+        >
+          <p> Find a new home </p>
+        </div>
       </>
     )
   }

@@ -4,8 +4,10 @@ class Header extends Component {
   render() {
     return(
       <>
-      <div>
-        <h5> Header </h5>
+      <div
+      id="header"
+      >
+        <h2> Welcome to the Heonn Region </h2>
       </div>
       </>
     )

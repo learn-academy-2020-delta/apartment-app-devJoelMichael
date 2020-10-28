@@ -1,38 +1,43 @@
 import React, { Component } from 'react'
-import { Nav, NavItem, NavLink } from 'reactstrap'
+import { Nav, NavItem } from 'reactstrap'
 
-class Footer extends Component {
-  render() {
+class Footer extends Component{
+  render(){
     const {
       logged_in,
       sign_in_route,
       sign_up_route,
       sign_out_route
     } = this.props
-    return (
+    return(
       <React.Fragment>
         <div id="footer">
           <Nav>
             <NavItem>
-              <a className="footer-words" href="/">Home</a>
+              <a href="/">Home</a>
             </NavItem>
             <NavItem>
               <a href="/apartmentindex">All the Apartments</a>
             </NavItem>
-            {logged_in &&
-              <NavItem>
-                <a href={sign_out_route}>Sign Out</a>
-              </NavItem>
+            { logged_in &&
+              <>
+                <NavItem>
+                  <a href={ sign_out_route }>Sign Out</a>
+                </NavItem>
+                <NavItem>
+                  <a href="/apartmentnew">Create a New Apartment</a>
+                </NavItem>
+              </>
             }
-            {!logged_in &&
-              <div>
+            { !logged_in &&
+              <>
                 <NavItem>
-                  <a href={sign_in_route}>Sign In</a>
+                  <a href={ sign_in_route }>Sign In</a>
                 </NavItem>
                 <NavItem>
-                  <a href={sign_up_route}>Sign Up</a>
+                  <a href={ sign_up_route }>Sign Up</a>
                 </NavItem>
-              </div>
+              </>
             }
           </Nav>
         </div>
