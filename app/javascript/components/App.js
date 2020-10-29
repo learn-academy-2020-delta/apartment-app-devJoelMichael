@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import Header from './components/Header'
-import Footer from './components/Footer'
 
 import ApartmentEdit from './pages/ApartmentEdit'
 import ApartmentIndex from './pages/ApartmentIndex'
@@ -11,7 +10,9 @@ import MyApartmentIndex from './pages/MyApartmentIndex'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 
-import mockApartments from './mockApartments.js'
+import Footer from './components/Footer'
+
+// import mockApartments from './mockApartments.js'
 
 import {
   BrowserRouter as Router,
@@ -23,16 +24,79 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      apartments: mockApartments
+      apartments: []
     }
   }
 
-  createNewApartment = (newApartment) => {
-    console.log(newApartment)
+  componentDidMount(){
+    this.getApartments()
+  }
+  getApartments = () => {
+    fetch("/apartments")
+    .then(response => {
+      return response.json()
+    })
+    .then(payload => {
+      this.setState({ apartments: payload })
+    })
+    .catch(errors => {
+      console.log("index errors:", errors)
+    })
+  }
+
+  createNewApartment = (apartment) => {
+    return fetch("/apartments", {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      this.getApartments()
+    })
+    .catch(errors => {
+      console.log("create errors:", errors)
+    })
   }
 
   updateApartment = (apartment, id) => {
-    console.log("apartment", apartment, "id", id)
+      return fetch(`/apartments/${id}`, {
+        // converting an object to a string
+        body: JSON.stringify(apartment),
+        // specify the info being sent in JSON and the info returning should be JSON
+        headers: {
+          "Content-Type": "application/json"
+        },
+        // HTTP verb so the correct endpoint is invoked on the server
+        method: "PATCH"
+      })
+      .then(response => {
+        if(response.status === 200){
+          this.getApartments()
+        }
+        return response
+      })
+      .catch(errors => {
+        console.log("edit errors", errors)
+      })
+    }
+
+  deleteApartment = (id) => {
+    return fetch(`apartments/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      alert("Remove this listing?")
+      this.getApartments()
+      return response
+    })
+    .catch(errors => {
+      console.log("delete errors:", errors)
+    })
   }
 
   render () {
@@ -44,31 +108,33 @@ class App extends Component {
       current_user
     } = this.props
     console.log("current user:", current_user)
+    console.log(this.state.apartments)
     return (
       <Router>
         <Header />
 
         <Switch>
           // Unprotected routes
+          // HOME
           <Route exact path="/" component={ Home } />
-
+          // INDEX
           <Route
             path="/apartmentindex"
             render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> }
           />
-
+          // SHOW
           <Route
             path="/apartmentshow/:id"
             render={ (props) => {
               let localid = props.match.params.id
               let apartment = this.state.apartments.find(apt => apt.id === parseInt(localid))
               return (
-                <ApartmentShow apartment={ apartment } />
+                <ApartmentShow apartment={ apartment } logged_in={ logged_in }/>
               )
             } }
           />
-
-        // Protected routes
+          // Protected routes
+          // USER CREATE
           { logged_in &&
             <Route
               path="/apartmentnew"
@@ -80,7 +146,7 @@ class App extends Component {
               }
             />
           }
-
+          // USER INDEX
           { logged_in &&
             <Route
               path="/myapartmentindex"
@@ -90,12 +156,16 @@ class App extends Component {
                 let apartments = this.state.apartments.filter(apartment => apartment.user_id === user)
                 console.log(apartments)
                 return (
-                  <MyApartmentIndex apartments={ apartments }/>
+                  <MyApartmentIndex
+                    apartments={ apartments }
+                    deleteApartment={ this.deleteApartment }
+                  />
+
                 )
               }}
             />
           }
-
+          // USER EDIT
           { logged_in &&
             <Route
               path="/apartmentedit/:id"

@@ -4,7 +4,9 @@ import {
   Form,
   FormGroup,
   Input,
-  Label
+  Label,
+  Container,
+  Col
 } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 
@@ -48,6 +50,8 @@ class ApartmentEdit extends Component{
         className="form-body"
         >
           <Form>
+          <Container>
+            <Col md="6">
             <FormGroup>
               <Label>Street</Label>
               <Input
@@ -139,6 +143,8 @@ class ApartmentEdit extends Component{
                 </Label>
               </FormGroup>
             </FormGroup>
+            </Col>
+            </Container>
             <Button
             name="submit"
             color="secondary"

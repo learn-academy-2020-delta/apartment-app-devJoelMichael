@@ -4,7 +4,9 @@ import {
   Form,
   FormGroup,
   Input,
-  Label
+  Label,
+  Container,
+  Col
 } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 
@@ -48,7 +50,7 @@ class ApartmentNew extends Component{
       <React.Fragment>
         <h3 id="new-title">Add an Apartment</h3>
         <div
-        className="body-container form"
+        className="body-container form-body"
         style={{
           backgroundImage: `url(${bg})`,
           backgroundPosition: 'center',
@@ -57,6 +59,8 @@ class ApartmentNew extends Component{
         }}
         >
             <Form>
+            <Container>
+              <Col md="6">
               <FormGroup>
                 <Label>Street</Label>
                 <Input
@@ -148,6 +152,8 @@ class ApartmentNew extends Component{
                   </Label>
                 </FormGroup>
               </FormGroup>
+              </Col>
+              </Container>
               <Button
               name="submit"
               color="secondary"
@@ -157,7 +163,7 @@ class ApartmentNew extends Component{
               </Button>
             </Form>
         </div>
-        { this.state.success && <Redirect to="/myindex" /> }
+        { this.state.success && <Redirect to="/apartmentindex" /> }
       </React.Fragment>
     )
   }

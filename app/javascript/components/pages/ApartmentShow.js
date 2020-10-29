@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import { Link } from 'react-router-dom'
+
 import pic from '../assets/renameMe.jpg'
 
 class ApartmentShow extends Component{
@@ -16,7 +19,7 @@ class ApartmentShow extends Component{
         }}
         >
           <div className="show-item-holder">
-            <p className="show-item">{ apartment.street } Apartment</p>
+            <h4> Apartment</h4>
             <p className="show-item">{ apartment.street }</p>
             <p className="show-item">{ apartment.city }, { apartment.state }</p>
             <p className="show-item">Manager Name: { apartment.manager }</p>
@@ -26,6 +29,16 @@ class ApartmentShow extends Component{
             <p className="show-item">Bathrooms: { apartment.bathrooms }</p>
             <p className="show-item">Are pets allowed: { apartment.pets }</p>
           </div>
+          { !this.props.logged_in &&
+          <Link to={"/apartmentindex"} className="button">
+            Back to All Apartments
+          </Link>
+        }
+        { this.props.logged_in &&
+          <Link to={"/myapartmentindex"} className="button">
+            Back to All Apartments
+          </Link>
+        }
         </div>
       </React.Fragment>
     )

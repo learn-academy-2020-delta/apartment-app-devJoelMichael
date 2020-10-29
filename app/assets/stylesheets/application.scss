@@ -20,6 +20,16 @@ html {
   scroll-behavior: smooth;
   font-family: 'Press Start 2P',cursive !important;
 }
+
+body {
+  height: 100vh;
+  max-height: 100%;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 35px;
+  width: 100%;
+  font-family: 'Press Start 2P', cursive;
+}
 // ########### H E A D E R ########### //
 
 h2 {
