@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import {
   Button,
   Form,
@@ -61,6 +62,15 @@ class ApartmentNew extends Component{
             <Form>
             <Container>
               <Col md="6">
+              <FormGroup>
+                <Label>Price</Label>
+                <Input
+                  type="text"
+                  name="price"
+                  onChange={ this.handleChange }
+                  value={ this.state.form.price }
+                />
+              </FormGroup>
               <FormGroup>
                 <Label>Street</Label>
                 <Input

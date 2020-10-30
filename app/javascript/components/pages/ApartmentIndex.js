@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-
+import { Card, CardBody, Button, CardTitle, CardText, CardImg } from 'reactstrap';
 import indie from '../assets/wallPaper.png'
 import ash from '../assets/ash.gif'
 import trainer from '../assets/trainer.png'

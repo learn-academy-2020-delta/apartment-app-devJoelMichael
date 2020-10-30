@@ -14,10 +14,13 @@ class ApartmentsController < ApplicationController
   end
 
   def update
+    # find the existing apartment by its id
     apartment = current_user.apartments.find(params[:id])
     apartment.update(apartment_params)
+    # if it is able to update succesfully we will render the new updates/edits to the aparetment
     if apartment.valid?
       render json: apartment
+      # and if it does not work we will then call an error to tell us what is going wrong
     else
       render json: apartment.errors, status: :unprocessable_entity
     end

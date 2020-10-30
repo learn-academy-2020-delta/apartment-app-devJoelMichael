@@ -8,7 +8,10 @@ import {
   Container,
   Col
 } from 'reactstrap'
+
 import { Redirect } from 'react-router-dom'
+
+import petal from '../assets/petal.png'
 
 class ApartmentEdit extends Component{
   constructor(props){
@@ -48,6 +51,12 @@ class ApartmentEdit extends Component{
         <h3>Edit Apartment</h3>
         <div
         className="form-body"
+        style={{
+          backgroundImage: `url(${petal})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'
+        }}
         >
           <Form>
           <Container>
@@ -96,6 +105,15 @@ class ApartmentEdit extends Component{
                 onChange={ this.handleChange }
                 value={ this.state.form.email }
               />
+              <FormGroup>
+                <Label>Price</Label>
+                <Input
+                  type="text"
+                  name="price"
+                  onChange={ this.handleChange }
+                  value={ this.state.form.price }
+                />
+              </FormGroup>
             </FormGroup>
             <FormGroup>
               <Label>Number of Bedrooms</Label>

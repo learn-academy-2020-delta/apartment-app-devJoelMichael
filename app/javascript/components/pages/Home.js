@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import map from '../assets/heonnMap.jpg'
-
+import Helmet from 'react-helmet'
 class Home extends Component {
   render() {
     return(

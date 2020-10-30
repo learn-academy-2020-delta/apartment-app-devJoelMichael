@@ -25,8 +25,6 @@ body {
   height: 100vh;
   max-height: 100%;
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 35px;
   width: 100%;
   font-family: 'Press Start 2P', cursive;
 }
@@ -39,7 +37,8 @@ h2 {
 #header {
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: relative;
+  top: 100%;
   width: 100%;
   background-color: black;
   color: white;
@@ -47,7 +46,31 @@ h2 {
   padding: 5px;
   font-family: 'Press Start 2P', cursive;
 }
-// ########### B O D Y ########### //
+// ########### M Y - A P R T ########### //
+
+#index-body {
+  font: white;
+  text-shadow: 2px 2px 1px grey;
+  height: 100vh;
+  max-height: 100%;
+  text-align: center;
+  width: 100%;
+  font-family: 'Press Start 2P', cursive;
+}
+
+div.index-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 4px;
+  padding: 5px;
+  border-radius: 20px;
+  height: 35%;
+  width: 25%;
+  font-family: 'Press Start 2P', cursive;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 // ########### H O M E ########### //
 
 img {
@@ -58,8 +81,6 @@ div#home-body {
   height: 100vh;
   max-height: 100%;
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 35px;
   width: 100%;
   font-family: 'Press Start 2P', cursive;
 }
@@ -91,6 +112,7 @@ div.flex-item {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
   border: 4px;
   padding: 25px;
   border-radius: 20px;
@@ -182,6 +204,8 @@ div#body-container {
   font-family: 'Press Start 2P', cursive;
 }
 // ########### A P R T - E D I T ########### //
+
+.form-body {}
 
 div.index-card {
   height: 100vh;

@@ -59,29 +59,33 @@ class App extends Component {
       console.log("create errors:", errors)
     })
   }
-
+  // UPDATE - TALK THROUGH
   updateApartment = (apartment, id) => {
+    //
       return fetch(`/apartments/${id}`, {
-        // converting an object to a string
+        // this will convert an object into a string
         body: JSON.stringify(apartment),
-        // specify the info being sent in JSON and the info returning should be JSON
+        // You need to specify the info being sent in JSON and the info returning should be JSON
         headers: {
           "Content-Type": "application/json"
         },
-        // HTTP verb so the correct endpoint is invoked on the server
+        // Here we have the HTTP verb, Patch, so the correct endpoint is invoked on the server
         method: "PATCH"
       })
       .then(response => {
+        // We are wanting a success from the request so we make the status equal to the OK response
         if(response.status === 200){
           this.getApartments()
         }
+        // It will then return the response we are looking for which is Patch/Update/Edit
         return response
       })
+      // If it fails however we can see where the error occors if we "catch it"
       .catch(errors => {
         console.log("edit errors", errors)
       })
     }
-
+    
   deleteApartment = (id) => {
     return fetch(`apartments/${id}`, {
       headers: {
@@ -168,13 +172,17 @@ class App extends Component {
           // USER EDIT
           { logged_in &&
             <Route
+            // make sure the path is the correct path
               path="/apartmentedit/:id"
               render={ (props) => {
+                // make sure that the ids are matched before editing
                 let id = props.match.params.id
                 let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
                 return (
                   <ApartmentEdit
+                  // Call the function you created above
                     updateApartment={ this.updateApartment }
+                    // Make sure that this is the current user and not anyone/everyone can edit your code
                     current_user={ current_user }
                     apartment={ apartment }
                   />
